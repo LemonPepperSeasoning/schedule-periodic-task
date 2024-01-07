@@ -32,3 +32,5 @@ The repository conducts extensive experiments to assess the reliability of each 
 [Optional: Acknowledge any external resources, libraries, or contributors who influenced or supported the project.]
 
 - https://stackoverflow.com/questions/474528/how-to-repeatedly-execute-a-function-every-x-seconds/25251804#25251804
+
+- https://medium.com/greedygame-engineering/an-elegant-way-to-run-periodic-tasks-in-python-61b7c477b679
