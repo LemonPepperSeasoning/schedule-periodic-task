@@ -4,6 +4,7 @@ from task import task, TASK_FREQUENCY, TASK_PRIORITY
 
 
 def repeat_task(scheduler, current_time, counter):
+    print(scheduler.queue)
     scheduler.enterabs(
         current_time,
         TASK_PRIORITY,
