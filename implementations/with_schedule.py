@@ -1,13 +1,15 @@
-import schedule
-import time 
-
-def job():
-    print(f'{time.time()} - Running job')
+import schedule, time
+from task import task, TASK_FREQUENCY
 
 
-#schedule.every().day.at('13:56').do(sched_job)
-schedule.every(1).seconds.do(job)
+def main():
+    #schedule.every().day.at('13:56').do(sched_job)
+    schedule.every(TASK_FREQUENCY).seconds.do(lambda: task("my param"))
 
-while True:
-    schedule.run_pending()
-    time.sleep(0.1)
+    while True:
+        schedule.run_pending()
+
+
+if __name__ == "__main__":
+    main()
+

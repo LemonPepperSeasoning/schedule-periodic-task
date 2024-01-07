@@ -1,21 +1,18 @@
 import asyncio, time
+from task import async_task, TASK_FREQUENCY
 
-async def my_job():
-    print(f"{time.monotonic()} - Job executed!")
-    time.sleep(0.2)
 
 async def schedule_job(interval_seconds):
     while True:
         await asyncio.sleep(interval_seconds)
-        asyncio.create_task(my_job())
+        asyncio.create_task(async_task())
 
 
 async def main():
     # Set the interval for the job (e.g., every 5 seconds)
-    interval_seconds = 1
 
     # Schedule the job
-    await schedule_job(interval_seconds)
+    await schedule_job(TASK_FREQUENCY)
 
 
 if __name__ == "__main__":

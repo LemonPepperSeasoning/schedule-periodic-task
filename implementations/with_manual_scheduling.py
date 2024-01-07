@@ -1,6 +1,8 @@
 import time
+from task import task, TASK_FREQUENCY
 
-while True:
-    print(f"{time.time()} - running job")
-    time.sleep(1)
 
+if __name__ == "__main__":
+    while True:
+        task()
+        time.sleep(TASK_FREQUENCY)

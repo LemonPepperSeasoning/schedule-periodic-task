@@ -1,6 +1,6 @@
-import threading
-import time
-from time import sleep
+import threading, time
+from task import task, TASK_FREQUENCY
+
 
 class RepeatedTimer(object):
   def __init__(self, interval, function, *args, **kwargs):
@@ -30,14 +30,11 @@ class RepeatedTimer(object):
     self.is_running = False
 
 
-def job(name):
-    print(f"{time.monotonic()} - running job")
-
-
 if __name__ == "__main__":
     print("starting...")
-    rt = RepeatedTimer(1, job, "World") # it auto-starts, no need of rt.start()
+    rt = RepeatedTimer(TASK_FREQUENCY, task, "my-param") # it auto-starts, no need of rt.start()
     try:
-        sleep(5) # your long-running job goes here...
+        time.sleep(10) # your long-running job goes here...
     finally:
         rt.stop() # better in a try/finally block to make sure the program ends!
+

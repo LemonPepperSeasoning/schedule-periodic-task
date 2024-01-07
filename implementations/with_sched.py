@@ -1,32 +1,20 @@
 import sched, time
+from task import task
 
-import sched, time
-s = sched.scheduler(time.monotonic, time.sleep)
-def print_time(a='default'):
-    print("From print_time", time.time(), a)
 
 def print_some_times():
     print(time.time())
-    s.enter(10, 1, print_time)
-    s.enter(5, 2, print_time, argument=('positional',))
+    s.enter(10, 1, task)
+    s.enter(5, 2, task, argument=('positional',))
     # despite having higher priority, 'keyword' runs after 'positional' as enter() is relative
-    s.enter(5, 1, print_time, kwargs={'a': 'keyword'})
-    s.enterabs(1_650_000_000, 10, print_time, argument=("first enterabs",))
-    s.enterabs(1_650_000_000, 5, print_time, argument=("second enterabs",))
+    s.enter(5, 1, task, kwargs={'id': 1})
+    #s.enterabs(1_650_000_000, 10, task, argument=("first enterabs",))
+    #s.enterabs(1_650_000_000, 5, task, argument=("second enterabs",))
     s.run()
     print(time.time())
 
-print_some_times()
 
-
-
-
-#def job():
-#    print(f"{time.time()} Job running...")
-#    scheduler.enter(1, 1, job, ())
-
-#scheduler = sched.scheduler(time.time, time.sleep)
-#scheduler.enter(0, 1, job, ())
-
-#scheduler.run()
+if __name__ == "__main__":
+    s = sched.scheduler(time.monotonic, time.sleep)
+    print_some_times()
 
