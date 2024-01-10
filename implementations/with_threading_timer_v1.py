@@ -10,6 +10,8 @@ def main():
         timer = threading.Timer(i, task, args=(i,))
         timer.start()
 
+    print("* Finished task")
+
 
 if __name__ == "__main__":
     main()
