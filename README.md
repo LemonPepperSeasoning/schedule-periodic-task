@@ -8,9 +8,14 @@ This repository explores various implementations of a task scheduler in Python, 
 
 ## Best Implementation
 
-**[Best Implementation Method Summary]**
+For heavy-heavy task that requires distributed computation, I would recommend using Celery. ([Celery-implemetation](implementations/with_celery.py)) Its easy to setup & there is no drift as well.
 
-[Provide a concise summary of the best implementation method at the top.]
+For lighter I/O bound task, using Manual scheduling plus the use of Threading should be sufficient. ([Manual-scheduling-with-Threading](implementations/with_manual_scheduling_using_thread.py))
+
+For ligher CPU bound task, use Multiprocessing instead. ([Manual-scheduling-with-process](implementations/with_manual_scheduling_using_process.py))
+
+Honourable mentions.
+The `Sched` library from the Python Standard Library allows you to schedule multiple tasks in advance, offering a more efficient approach compared to scheduling tasks individually on the main thread in other implementations. (see [Sched-implementation](implementations/with_sched_v2.py))
 
 ## Experiments and Results
 
@@ -25,12 +30,10 @@ The repository conducts extensive experiments to assess the reliability of each 
 
 #### Drift Measurement
 
-[Present the results of the drift measurement experiments, including any observations or patterns.]
+TBD, but in summary, avoid using the schedule library if drift is a concern. Ensure tasks run in a different thread or process to prevent blocking the main thread and hindering the scheduling of subsequent tasks
 
 ### Acknowledgments
 
-[Optional: Acknowledge any external resources, libraries, or contributors who influenced or supported the project.]
+- [StackOverflow ideas](https://stackoverflow.com/questions/474528/how-to-repeatedly-execute-a-function-every-x-seconds/25251804#25251804)
 
-- https://stackoverflow.com/questions/474528/how-to-repeatedly-execute-a-function-every-x-seconds/25251804#25251804
-
-- https://medium.com/greedygame-engineering/an-elegant-way-to-run-periodic-tasks-in-python-61b7c477b679
+- [Medium Article on related topic](https://medium.com/greedygame-engineering/an-elegant-way-to-run-periodic-tasks-in-python-61b7c477b679)
