@@ -10,9 +10,9 @@ This repository explores various implementations of a task scheduler in Python, 
 
 For heavy-heavy task that requires distributed computation, I would recommend using Celery. ([Celery-implemetation](implementations/with_celery.py)) Its easy to setup & there is no drift as well.
 
-For lighter I/O bound task, using Manual scheduling plus the use of Threading should be sufficient. ([Manual-scheduling-with-Threading](implementations/with_manual_scheduling_using_thread.py))
+For lighter I/O bound task, using Manual scheduling plus the use of Threading should be sufficient. ([Manual-scheduling-with-Threading](implementations/with_manual_scheduling_v3_thread.py))
 
-For ligher CPU bound task, use Multiprocessing instead. ([Manual-scheduling-with-process](implementations/with_manual_scheduling_using_process.py))
+For ligher CPU bound task, use Multiprocessing instead. ([Manual-scheduling-with-process](implementations/with_manual_scheduling_v3_process.py))
 
 Honourable mentions.
 The `Sched` library from the Python Standard Library allows you to schedule multiple tasks in advance, offering a more efficient approach compared to scheduling tasks individually on the main thread in other implementations. (see [Sched-implementation](implementations/with_sched_v2.py))
