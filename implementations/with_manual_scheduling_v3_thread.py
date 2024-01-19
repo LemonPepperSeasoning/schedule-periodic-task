@@ -1,4 +1,4 @@
-import time
+import time, threading
 from task import task, TASK_FREQUENCY
 
 
@@ -7,7 +7,7 @@ def main():
     start_time = round(time.monotonic())
 
     while True:
-        task(counter)
+        threading.Thread(target=task, args=(counter,)).start()
         elapsed_time = time.monotonic() - start_time - counter
         sleep_time = max(0, TASK_FREQUENCY - elapsed_time)
         time.sleep(sleep_time)
@@ -16,4 +16,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

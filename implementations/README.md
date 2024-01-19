@@ -17,5 +17,5 @@ redis-server
 celery -A with_celery worker    # to run the worker. ie, node that execute the task
 
 # on third terminal run;
-celery -A with_celery beat      # to run the task-scheduler
+celery -A with_celery beat -l debug      # to run the task-scheduler
 ```
